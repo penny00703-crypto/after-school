@@ -141,6 +141,9 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 .btn-primary:active{transform:scale(.96)}
 .btn-primary.grn{background:linear-gradient(135deg,#4CAF50,#2E7D32);box-shadow:0 6px 18px rgba(46,125,50,.4)}
 .btn-primary.grn:hover{box-shadow:0 10px 24px rgba(46,125,50,.5)}
+
+/* 品牌 logo：固定在屏幕左上角，不遮挡任何内容 */
+.logo{position:absolute;top:16px;left:20px;height:52px;width:auto;z-index:20;pointer-events:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
 </style>
 </head>
 <body>
@@ -149,15 +152,16 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 <!-- Screen 0: Pre-class reminder -->
 <div class="screen active" id="s0">
 <img src="images/bg-screen0.png?v=2" alt="" class="bg">
+<img src="images/logo.png" alt="51Talk" class="logo">
 <div class="dim"></div>
 <div class="ly" style="justify-content:center">
 <div class="card-d" style="width:100%;max-width:540px;text-align:center">
 <h2 dir="rtl" lang="ar" style="font-size:34px;margin-bottom:18px;font-weight:800">قبل أن نبدأ</h2>
 <div style="font-size:20px;line-height:2.1;margin-bottom:18px;text-align:right">
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><span style="font-size:26px;flex-shrink:0">🔊</span><span>تأكد من أن الصوت يعمل جيداً</span></div>
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><span style="font-size:26px;flex-shrink:0">🛋️</span><span>اجلس في مكان مريح مع إضاءة جيدة</span></div>
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><span style="font-size:26px;flex-shrink:0">📝</span><span>حضّر ورقة وقلم (اختياري)</span></div>
-<div style="display:flex;align-items:center;gap:12px"><span style="font-size:26px;flex-shrink:0">🎉</span><span>استمتع بالحصة!</span></div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><span style="font-size:26px;flex-shrink:0">🎤</span><span>تأكد من فتح الميكروفون والكاميرا</span></div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><span style="font-size:26px;flex-shrink:0">🌐</span><span>تأكد من أن الإنترنت يعمل جيداً</span></div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><span style="font-size:26px;flex-shrink:0">🤫</span><span>اجلس في مكان هادئ ومريح</span></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="font-size:26px;flex-shrink:0">✏️</span><span>حضّر الأدوات المدرسية اللازمة</span></div>
 </div>
 <p dir="rtl" lang="ar" style="font-size:16px;opacity:.75;margin-bottom:18px">مدة الحصة: 25 دقيقة</p>
 <div style="display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap">
@@ -172,6 +176,7 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 <!-- Screen 1: Cover -->
 <div class="screen" id="s1">
 <img src="images/bg-screen1.png?v=2" alt="" class="bg">
+<img src="images/logo.png" alt="51Talk" class="logo">
 <div style="position:absolute;bottom:0;left:0;width:100%;height:25%;background:linear-gradient(to top,#F5E6C8,transparent);z-index:1;pointer-events:none"></div>
 <div class="ly" style="justify-content:flex-start;padding-top:100px">
 <div class="tag" style="margin-bottom:10px">WeCan Grade 3 · Unit 3 · Lesson 1<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">الصف الثالث · الوحدة 3 · الدرس 1</span></div>
@@ -713,6 +718,7 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 <!-- Screen 25: Teacher Feedback -->
 <div class="screen" id="s25">
 <img src="images/bg-screen12.png?v=2" alt="" class="bg">
+<img src="images/logo.png" alt="51Talk" class="logo">
 <div class="dim" style="background:rgba(0,0,0,.35)"></div>
 <div class="ly" style="justify-content:center">
 <div class="tag" style="margin-bottom:10px">FEEDBACK<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">ملاحظات المعلم</span></div>
