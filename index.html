@@ -109,9 +109,9 @@ body.ar-on .ar-t.ar-i{display:inline}
 #arBtn:hover{transform:scale(1.05)}
 #arBtn.on{background:linear-gradient(135deg,#4CAF50,#2E7D32);color:#fff}
 /* 语法页信息密度最高，全翻译模式下紧凑化，防止溢出舞台 */
-body.ar-on #s17 .ly{padding-top:6px !important;padding-bottom:78px !important}
-body.ar-on #s17 .card{padding-top:8px !important;padding-bottom:8px !important}
-body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin-bottom:2px !important}
+body.ar-on #s13 .ly{padding-top:6px !important;padding-bottom:78px !important}
+body.ar-on #s13 .card{padding-top:8px !important;padding-bottom:8px !important}
+body.ar-on #s13 .ar-t{font-size:12px !important;margin-top:2px !important;margin-bottom:2px !important}
 
 /* 拼句子练习 */
 .tile{padding:12px 24px;border:3px solid #E0E0E0;border-radius:14px;background:#fff;font-family:'Nunito',sans-serif;font-size:20px;font-weight:800;color:#1B4D3E;cursor:pointer;transition:all .2s}
@@ -144,6 +144,69 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 
 /* 品牌 logo：固定在屏幕左上角，不遮挡任何内容 */
 .logo{position:absolute;top:14px;left:20px;height:38px;width:auto;z-index:20;pointer-events:none;filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
+
+/* ===== 打地鼠 Whack-a-Mole ===== */
+.mole-top{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:10px}
+.mole-prompt{direction:rtl;font-size:24px;font-weight:800;color:#3E2723;background:#fff;border-radius:18px;padding:10px 28px;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.mole-prompt b{color:#C9A227;font-size:30px}
+.mole-score{direction:ltr;font-size:19px;font-weight:800;color:#fff;background:#1B4D3E;padding:10px 22px;border-radius:999px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.mole-score b{color:#FFD966}
+.mole-timer{width:520px;height:14px;background:rgba(255,255,255,.5);border-radius:999px;margin:10px auto 2px;overflow:hidden}
+.mole-timer i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#FFD966,#C9A227);border-radius:999px;transition:width .1s linear}
+#moleGrid{display:grid;grid-template-columns:repeat(3,210px);grid-auto-rows:160px;gap:12px 36px;justify-content:center;margin-top:6px;direction:ltr}
+.hole{position:relative;overflow:hidden;border-radius:20px 20px 0 0}
+.hole::after{content:"";position:absolute;bottom:0;left:6%;right:6%;height:26px;background:radial-gradient(ellipse at center,#5D4037 0%,#3E2723 70%);border-radius:50%}
+.mole{position:absolute;left:8%;right:8%;bottom:-110%;height:142px;border:none;cursor:pointer;background:linear-gradient(#fff,#FFF8E1);border-radius:22px 22px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;padding-top:8px;transition:bottom .3s cubic-bezier(.34,1.56,.64,1);font-family:'Nunito',sans-serif}
+.hole.up .mole{bottom:10px}
+.mole .em{font-size:44px;line-height:1.1}
+.mole span{font-size:20px;font-weight:800;color:#1B4D3E;direction:ltr}
+.mole.hit{background:#C8E6C9}
+.mole.shake{animation:mshake .4s}
+@keyframes mshake{0%,100%{transform:translateX(0)}25%{transform:translateX(-9px)}75%{transform:translateX(9px)}}
+.mole-end{position:absolute;inset:30px 60px 110px;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(255,248,225,.97);border-radius:30px;z-index:30;text-align:center}
+.mole-end h2{direction:rtl;font-size:36px;color:#3E2723;font-weight:800}
+.mole-end .big{direction:ltr;font-size:56px;font-weight:800;color:#C9A227;font-family:'Nunito',sans-serif}
+.mole-end .stars{font-size:44px}
+/* ===== 热土豆 Hot Potato ===== */
+.hp-arena{position:relative;width:100%;max-width:760px;height:190px;margin-top:6px;direction:ltr}
+.hp-side{position:absolute;bottom:0;display:flex;flex-direction:column;align-items:center;gap:4px;font-family:'Nunito',sans-serif;font-weight:800;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5);font-size:15px}
+.hp-side .av{width:104px;height:104px;border-radius:50%;background:#fff;border:4px solid #C9A227;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.hp-side .av img{width:100%;height:100%;object-fit:cover}
+.hp-side .av .emo{font-size:54px;line-height:1}
+.hp-omar{left:10px}.hp-you{right:10px}
+#hpBomb{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:66px;line-height:1;transition:left .45s cubic-bezier(.34,1.3,.64,1),bottom .45s;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35));z-index:5}
+#hpBomb.shakeb{animation:bshake .12s infinite}
+@keyframes bshake{0%,100%{transform:translateX(-50%) rotate(-6deg)}50%{transform:translateX(-50%) rotate(6deg)}}
+.splat{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:72px;line-height:1;display:none;z-index:8;pointer-events:none;filter:drop-shadow(0 4px 8px rgba(0,0,0,.3))}
+.splat.on{display:block;animation:splat .45s cubic-bezier(.34,1.56,.64,1)}
+@keyframes splat{0%{transform:translateX(-50%) scale(2.4);opacity:0}55%{transform:translateX(-50%) scale(.85,1.25);opacity:1}100%{transform:translateX(-50%) scale(1.2,.8)}}
+.splat .drip{position:absolute;font-size:26px;top:44px}
+.splat .d1{left:-16px}.splat .d2{right:-14px;top:52px}
+.hp-fuse{width:420px;height:12px;background:rgba(255,255,255,.5);border-radius:999px;margin:2px auto 8px;overflow:hidden}
+.hp-fuse i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#FFD966,#F57A1F);border-radius:999px;transition:width .1s linear}
+.hp-card{background:#fff;border-radius:20px;padding:12px 26px;box-shadow:0 8px 24px rgba(0,0,0,.2);text-align:center;max-width:560px;width:100%}
+.hp-q{font-family:'Nunito',sans-serif;font-size:23px;font-weight:800;color:#1B4D3E;direction:ltr}
+.hp-asm{min-height:46px;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;direction:ltr;margin-top:6px}
+.hp-asm .slot{min-width:64px;border-bottom:4px dashed #C9A227;font-family:'Nunito',sans-serif;font-size:22px;font-weight:800;color:#1B4D3E;text-align:center;padding:2px 6px}
+.hp-bank{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;direction:ltr;margin-top:8px}
+.hp-stage.shake{animation:mshake .45s}
+/* ===== 彩带 ===== */
+.cf{position:fixed;top:-14px;width:10px;height:16px;z-index:500;pointer-events:none;animation:cfall linear forwards;border-radius:2px}
+@keyframes cfall{to{transform:translateY(820px) rotate(720deg);opacity:.6}}
+
+/* ===== 预加载进度 ===== */
+#loadWrap{width:100%;max-width:340px;margin:10px auto 0}
+#loadBar{height:10px;background:rgba(255,255,255,.25);border-radius:999px;overflow:hidden}
+#loadBar i{display:block;height:100%;width:0%;background:linear-gradient(90deg,#FFD966,#C9A227);border-radius:999px;transition:width .2s}
+#loadTxt{font-size:13px;font-weight:700;color:#FFD966;margin-top:6px;text-align:center;direction:rtl}
+/* ===== 庆祝动效 ===== */
+.stars .pop{display:inline-block;opacity:0;animation:starpop .55s cubic-bezier(.34,1.56,.64,1) forwards}
+@keyframes starpop{0%{transform:scale(0) rotate(-40deg);opacity:0}70%{transform:scale(1.5) rotate(8deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+.mole-end.show{animation:endin .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes endin{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+.cheer{height:120px;width:120px;border-radius:50%;object-fit:cover;border:4px solid #C9A227;background:#fff;animation:cheerb 1s ease infinite alternate;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+@keyframes cheerb{0%{transform:translateY(0) rotate(-4deg)}100%{transform:translateY(-12px) rotate(4deg)}}
+.mole-end .cheer-txt{direction:rtl;font-size:17px;font-weight:800;color:#1B4D3E;background:#E8F5E9;border-radius:14px;padding:6px 18px}
 </style>
 </head>
 <body>
@@ -169,6 +232,7 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 <button class="btn" dir="rtl" lang="ar" style="font-size:22px" onclick="go(1)">فهمت، لنبدأ!</button>
 </div>
 <p id="sndOk" dir="rtl" lang="ar" style="font-size:15px;font-weight:700;color:#7CFC9A;margin-top:10px;opacity:0;transition:opacity .4s">✔ الصوت يعمل جيداً!</p>
+<div id="loadWrap"><div id="loadBar"><i id="loadFill"></i></div><p id="loadTxt" lang="ar">جاري تحميل الصور والأصوات... 0%</p></div>
 </div>
 </div>
 </div>
@@ -431,106 +495,34 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 </div>
 </div>
 
-<!-- Screen 12: Practice 1 - Word Match (Arabic -> English) -->
+<!-- Screen 12: Practice 1 - Whack the Activity (打地鼠词汇游戏) -->
 <div class="screen" id="s12">
 <img src="images/bg-screen8.png?v=2" alt="" class="bg">
 <div class="dim" style="background:rgba(0,0,0,.35)"></div>
 <div class="ly" style="justify-content:center">
-<div class="tag" style="margin-bottom:8px">PRACTICE 1<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">تمرين</span></div>
-<h1 class="t1" style="margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.7)">Word Match!</h1><p class="ar-t" dir="rtl" lang="ar" style="font-size:16px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">طابق الكلمات!</p>
-<p class="t2" style="margin-bottom:4px;text-shadow:0 2px 6px rgba(0,0,0,.6)">Choose the correct English word.</p><p class="ar-t" dir="rtl" lang="ar" style="font-size:14px;color:#fff;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">اختر الكلمة الإنجليزية الصحيحة.</p>
-<p class="source">Source: WeCan G3 U3 L1 · P.24-25 · Word Review</p>
-<div class="card" style="width:100%;max-width:440px;text-align:center;margin-top:12px;margin-bottom:12px;padding:16px">
-<div class="prg" id="wmP">1 / 4</div>
-<p dir="rtl" lang="ar" id="wmQ" style="font-size:26px;font-weight:700;color:#1B4D3E;margin-bottom:12px;font-family:'Noto Sans Arabic'">كرة القدم</p>
-<div class="mc-grid" id="wmOpts"></div>
+<div class="tag" style="margin-bottom:4px">PRACTICE 1<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">تمرين</span></div>
+<h1 class="t1" style="font-size:32px;margin-bottom:2px;text-shadow:0 2px 8px rgba(0,0,0,.7)">Whack the Activity!</h1><p class="ar-t" dir="rtl" lang="ar" style="font-size:15px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:0">اضرب النشاط!</p>
+<p class="t2" style="font-size:15px;margin-bottom:0;text-shadow:0 2px 6px rgba(0,0,0,.6)">Tap the correct word before time runs out!</p><p class="ar-t" dir="rtl" lang="ar" style="font-size:13px;color:#fff;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:0">اضغط على الكلمة الصحيحة قبل انتهاء الوقت!</p>
+<p class="source">Source: WeCan G3 U3 L1 · P.24-25 · Vocabulary Game</p>
+<div class="mole-top">
+<div class="mole-prompt" dir="rtl" lang="ar">اضغط على كلمة: <b id="moleWord">...</b></div>
+<div class="mole-score">Score: <b id="moleScore">0</b> / 8<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">النقاط</span></div>
 </div>
-<div id="f12" class="fbb"><span class="en">Correct!</span><span class="ar-t" dir="rtl" lang="ar">صحيح!</span></div>
-</div>
-</div>
-
-<!-- Screen 13: Practice 2 - Picture Match A -->
-<div class="screen" id="s13">
-<img src="images/bg-screen9.png?v=2" alt="" class="bg">
-<div class="dim" style="background:rgba(0,0,0,.35)"></div>
-<div class="ly" style="justify-content:center">
-<div class="tag" style="margin-bottom:8px">PRACTICE 2<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">تمرين</span></div>
-<h1 class="t1" style="margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.7)">Picture Match!</h1><p class="ar-t" dir="rtl" lang="ar" style="font-size:16px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">طابق الصورة!</p>
-<p class="t2" style="margin-bottom:4px;text-shadow:0 2px 6px rgba(0,0,0,.6)">Look at the picture. Choose the word.</p><p class="ar-t" dir="rtl" lang="ar" style="font-size:14px;color:#fff;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">انظر إلى الصورة. اختر الكلمة.</p>
-<p class="source">Source: WeCan G3 U3 L1 · P.24-25 · Picture-Word Match</p>
-<div class="card" style="width:100%;max-width:440px;text-align:center;margin-top:12px;margin-bottom:12px;padding:16px">
-<div class="prg" id="pm1P">1 / 2</div>
-<div id="pm1Pic" style="font-size:64px;margin-bottom:12px;line-height:1">⚽</div>
-<div class="mc-grid" id="pm1Opts"></div>
-</div>
-<div id="f13" class="fbb"><span class="en">Correct!</span><span class="ar-t" dir="rtl" lang="ar">صحيح!</span></div>
+<div class="mole-timer"><i id="moleBar"></i></div>
+<div id="moleGrid"></div>
+<div class="mole-end" id="moleEnd">
+<img class="cheer" src="images/char-omar-face.png" alt="Omar" onerror="this.style.display='none'">
+<div class="stars" id="moleStars"></div>
+<div class="cheer-txt" lang="ar">عمر يصفّق لك! 👏</div>
+<h2 id="moleEndNote">أحسنت يا بطل!</h2>
+<div class="big" id="moleFinal">0 / 8</div>
+<button class="btn-primary grn" onclick="next()">Next ▶ <span class="ar-t ar-i" dir="rtl" lang="ar" style="font-size:13px">التالي</span></button>
 </div>
 </div>
-
-<!-- Screen 14: Practice 3 - Picture Match B -->
-<div class="screen" id="s14">
-<img src="images/bg-screen8.png?v=2" alt="" class="bg">
-<div class="dim" style="background:rgba(0,0,0,.35)"></div>
-<div class="ly" style="justify-content:center">
-<div class="tag" style="margin-bottom:8px">PRACTICE 3<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">تمرين</span></div>
-<h1 class="t1" style="margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.7)">Picture Match!</h1><p class="ar-t" dir="rtl" lang="ar" style="font-size:16px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">طابق الصورة!</p>
-<p class="t2" style="margin-bottom:4px;text-shadow:0 2px 6px rgba(0,0,0,.6)">Look at the picture. Choose the word.</p><p class="ar-t" dir="rtl" lang="ar" style="font-size:14px;color:#fff;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">انظر إلى الصورة. اختر الكلمة.</p>
-<p class="source">Source: WeCan G3 U3 L1 · P.24-25 · Picture-Word Match</p>
-<div class="card" style="width:100%;max-width:440px;text-align:center;margin-top:12px;margin-bottom:12px;padding:16px">
-<div class="prg" id="pm2P">1 / 2</div>
-<div id="pm2Pic" style="font-size:64px;margin-bottom:12px;line-height:1">🎮</div>
-<div class="mc-grid" id="pm2Opts"></div>
 </div>
-<div id="f14" class="fbb"><span class="en">Correct!</span><span class="ar-t" dir="rtl" lang="ar">صحيح!</span></div>
-</div>
-</div>
-
-<!-- Screen 15: Practice 4 - Match the Pairs (football set) -->
-<div class="screen" id="s15">
-<img src="images/bg-screen9.png?v=2" alt="" class="bg">
-<div class="dim" style="background:rgba(0,0,0,.35)"></div>
-<div class="ly" style="justify-content:center">
-<div class="tag" style="margin-bottom:8px">PRACTICE 4<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">تمرين</span></div>
-<h1 class="t1" style="margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.7)">Match the Pairs!</h1><p class="ar-t" dir="rtl" lang="ar" style="font-size:16px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">طابق الأزواج!</p>
-<p class="t2" style="margin-bottom:4px;text-shadow:0 2px 6px rgba(0,0,0,.6)">Tap a picture, then tap the matching word.</p><p class="ar-t" dir="rtl" lang="ar" style="font-size:14px;color:#fff;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">اضغط على الصورة، ثم اضغط على الكلمة المطابقة.</p>
-<p class="source">Source: WeCan G3 U3 L1 · P.24-25 · Picture-Word Matching</p>
-<div class="card" style="width:100%;max-width:560px;margin-top:12px;margin-bottom:12px;padding:18px 24px">
-<div class="prg" id="mtP">0 / 4</div>
-<div dir="ltr" style="display:flex;gap:40px;justify-content:center;align-items:center">
-<div id="mtLeft" style="display:flex;flex-direction:column;gap:12px"></div>
-<div style="font-size:26px;color:#C9A227">⇄</div>
-<div id="mtRight" style="display:flex;flex-direction:column;gap:12px"></div>
-</div>
-</div>
-<div id="f15p" class="fbb"><span class="en">Great job!</span><span class="ar-t" dir="rtl" lang="ar">عمل رائع!</span></div>
-</div>
-</div>
-
-
-<!-- Screen 16: Practice 5 - Match the Pairs (reading set) -->
-<div class="screen" id="s16">
-<img src="images/bg-screen9.png?v=2" alt="" class="bg">
-<div class="dim" style="background:rgba(0,0,0,.35)"></div>
-<div class="ly" style="justify-content:center">
-<div class="tag" style="margin-bottom:8px">PRACTICE 5<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">تمرين</span></div>
-<h1 class="t1" style="margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.7)">Match the Pairs!</h1><p class="ar-t" dir="rtl" lang="ar" style="font-size:16px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">طابق الأزواج!</p>
-<p class="t2" style="margin-bottom:4px;text-shadow:0 2px 6px rgba(0,0,0,.6)">Tap a picture, then tap the matching word.</p><p class="ar-t" dir="rtl" lang="ar" style="font-size:14px;color:#fff;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">اضغط على الصورة، ثم اضغط على الكلمة المطابقة.</p>
-<p class="source">Source: WeCan G3 U3 L1 · P.24-25 · Picture-Word Matching</p>
-<div class="card" style="width:100%;max-width:560px;margin-top:12px;margin-bottom:12px;padding:18px 24px">
-<div class="prg" id="mt2P">0 / 4</div>
-<div dir="ltr" style="display:flex;gap:40px;justify-content:center;align-items:center">
-<div id="mt2Left" style="display:flex;flex-direction:column;gap:12px"></div>
-<div style="font-size:26px;color:#C9A227">⇄</div>
-<div id="mt2Right" style="display:flex;flex-direction:column;gap:12px"></div>
-</div>
-</div>
-<div id="f16n" class="fbb"><span class="en">Great job!</span><span class="ar-t" dir="rtl" lang="ar">عمل رائع!</span></div>
-</div>
-</div>
-
 
 <!-- Screen 17: Grammar - Do you like...? (all English, no audio) -->
-<div class="screen" id="s17">
+<div class="screen" id="s13">
 <img src="images/bg-screen8.png?v=2" alt="" class="bg">
 <div class="dim" style="background:rgba(0,0,0,.3)"></div>
 <div class="ly" style="justify-content:center">
@@ -563,67 +555,44 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 </div>
 
 
-<!-- Screen 18: Practice 6 - Q&A Match -->
-<div class="screen" id="s18">
+<!-- Screen 14: Practice 2 - Hot Potato (热土豆语法游戏) -->
+<div class="screen" id="s14">
 <img src="images/bg-screen9.png?v=2" alt="" class="bg">
-<div class="dim" style="background:rgba(0,0,0,.3)"></div>
-<div class="ly" style="justify-content:center">
-<div class="tag" style="margin-bottom:8px">PRACTICE 6<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">تمرين</span></div>
-<h1 class="t1" style="margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.7)">Q & A Match!</h1><p class="ar-t" dir="rtl" lang="ar" style="font-size:16px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">طابق السؤال والإجابة!</p>
-<p class="t2" style="margin-bottom:4px;text-shadow:0 2px 6px rgba(0,0,0,.6)">Pick the correct answer.</p><p class="ar-t" dir="rtl" lang="ar" style="font-size:14px;color:#fff;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">اختر الإجابة الصحيحة.</p>
-<p class="source">Source: WeCan G3 U3 L1 · P.25 · Pattern: Do you like...? Yes/No</p>
-<div class="card" style="width:100%;max-width:480px;text-align:center;margin-top:12px;margin-bottom:12px;padding:16px">
-<p dir="ltr" lang="en" style="font-family:'Nunito',sans-serif;font-size:20px;font-weight:700;color:#1B4D3E;margin-bottom:12px">Do you like basketball?</p><p class="ar-t" dir="rtl" lang="ar" style="font-size:14px;font-weight:600;color:#8D6E63;margin-top:2px">هل تحب كرة السلة؟</p>
-<div class="mc-grid" id="q15">
-<button class="mc-btn" onclick="ans(this,false)">I am fine.</button>
-<button class="mc-btn" onclick="ans(this,true)">Yes, I do.</button>
-<button class="mc-btn" onclick="ans(this,false)">No, I am not.</button>
-<button class="mc-btn" onclick="ans(this,false)">Thank you.</button>
-</div>
-</div>
-<div id="f15" class="fbb"><span class="en">Correct!</span><span class="ar-t" dir="rtl" lang="ar">صحيح!</span></div>
-</div>
-</div>
-
-<!-- Screen 19: Practice 7 - Fill in the Blank -->
-<div class="screen" id="s19">
-<img src="images/bg-screen8.png?v=2" alt="" class="bg">
 <div class="dim" style="background:rgba(0,0,0,.35)"></div>
-<div class="ly" style="justify-content:center">
-<div class="tag" style="margin-bottom:8px">PRACTICE 7<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">تمرين</span></div>
-<h1 class="t1" style="margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.7)">Fill in the Blank!</h1><p class="ar-t" dir="rtl" lang="ar" style="font-size:16px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">املأ الفراغ!</p>
-<p class="t2" style="margin-bottom:4px;text-shadow:0 2px 6px rgba(0,0,0,.6)">Choose the correct word.</p><p class="ar-t" dir="rtl" lang="ar" style="font-size:14px;color:#fff;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">اختر الكلمة الصحيحة.</p>
-<p class="source">Source: WeCan G3 U3 L1 · P.25-26 · Sentence Completion</p>
-<div class="card" style="width:100%;max-width:520px;text-align:center;margin-top:12px;margin-bottom:12px;padding:18px 24px">
-<div class="prg" id="fbP">1 / 2</div>
-<div id="fbPic" style="font-size:56px;margin-bottom:8px;line-height:1">📖</div>
-<p dir="ltr" lang="en" id="fbSent" style="font-family:'Nunito',sans-serif;font-size:26px;font-weight:800;color:#1B4D3E;margin-bottom:14px">I like <span id="fbSlot" style="display:inline-block;min-width:150px;border-bottom:3px dashed #C9A227;color:#C9A227">______</span>.</p>
-<div class="mc-grid" id="fbOpts" style="grid-template-columns:repeat(3,1fr)"></div>
+<div class="ly" style="justify-content:center" id="hpStage">
+<div class="tag" style="margin-bottom:4px">PRACTICE 2<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">تمرين</span></div>
+<h1 class="t1" style="font-size:32px;margin-bottom:2px;text-shadow:0 2px 8px rgba(0,0,0,.7)">Hot Potato!</h1><p class="ar-t" dir="rtl" lang="ar" style="font-size:15px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:0">البطاطس الساخنة!</p>
+<p class="t2" style="font-size:15px;margin-bottom:0;text-shadow:0 2px 6px rgba(0,0,0,.6)">Answer fast — pass the hot potato to Omar!</p><p class="ar-t" dir="rtl" lang="ar" style="font-size:13px;color:#fff;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:0">أجب بسرعة — مرّر البطاطس الساخنة إلى عمر!</p>
+<p class="source">Source: WeCan G3 U3 L1 · P.25-26 · Grammar Game: Do you like...? / I like...</p>
+<div style="display:flex;align-items:center;gap:16px;margin-top:4px">
+<div class="mole-score">Score: <b id="hpScore">0</b> / 6<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">النقاط</span></div>
+<div class="mole-score" style="background:#7A4E2D">Round: <b id="hpRound">1</b> / 6<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">الجولة</span></div>
 </div>
-<div id="f17" class="fbb"><span class="en">Correct!</span><span class="ar-t" dir="rtl" lang="ar">صحيح!</span></div>
+<div class="hp-arena">
+<div class="hp-side hp-omar"><div class="splat" id="hpSplatOmar">🥔<span class="drip d1">🟡</span><span class="drip d2">🟡</span></div><div class="av"><img src="images/char-omar-face.png" alt="Omar" onerror="this.outerHTML='<span class=emo>👦</span>'"></div><span>Omar</span></div>
+<div id="hpBomb">🥔</div>
+<div class="hp-side hp-you"><div class="splat" id="hpSplatYou">🥔<span class="drip d1">🟡</span><span class="drip d2">🟡</span></div><div class="av"><span class="emo">🧒</span></div><span>You<span class="ar-t ar-i" dir="rtl" lang="ar"> · أنت</span></span></div>
 </div>
+<div class="hp-fuse"><i id="hpFuse"></i></div>
+<div class="hp-card" id="hpCard">
+<p class="hp-q" id="hpQ">...</p>
+<div class="mc-grid" id="hpOpts" style="max-width:520px;margin-top:8px"></div>
+<div class="hp-asm" id="hpAsm" style="display:none"></div>
+<div class="hp-bank" id="hpBank" style="display:none"></div>
 </div>
-
-<!-- Screen 20: Practice 8 - Sentence Builder -->
-<div class="screen" id="s20">
-<img src="images/bg-screen3.png?v=2" alt="" class="bg">
-<div class="dim" style="background:rgba(0,0,0,.35)"></div>
-<div class="ly" style="justify-content:center">
-<div class="tag" style="margin-bottom:8px">PRACTICE 8<span class="ar-t ar-i"> · </span><span class="ar-t ar-i" dir="rtl" lang="ar">تمرين</span></div>
-<h1 class="t1" style="margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.7)">Build the Sentence!</h1><p class="ar-t" dir="rtl" lang="ar" style="font-size:16px;font-weight:700;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">ركّب الجملة!</p>
-<p class="t2" style="margin-bottom:4px;text-shadow:0 2px 6px rgba(0,0,0,.6)">Tap the words in the correct order.</p><p class="ar-t" dir="rtl" lang="ar" style="font-size:14px;color:#fff;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.6);margin-top:2px">اضغط على الكلمات بالترتيب الصحيح.</p>
-<p class="source">Source: WeCan G3 U3 L1 · P.25 · Sentence Building</p>
-<div style="margin-top:14px;width:100%;max-width:540px;display:flex;flex-direction:column;align-items:center;gap:16px">
-<div class="prg" id="sbP" style="color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)">1 / 2</div>
-<div class="asm" id="sbAsm" dir="ltr"></div>
-<div dir="ltr" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap" id="sbBank"></div>
+<div class="mole-end" id="hpEnd">
+<img class="cheer" src="images/char-omar-face.png" alt="Omar" onerror="this.style.display='none'">
+<div class="stars" id="hpStars"></div>
+<div class="cheer-txt" lang="ar">عمر يصفّق لك! 👏</div>
+<h2 id="hpEndNote">نجت البطاطس! أحسنت!</h2>
+<div class="big" id="hpFinal">0 / 6</div>
+<button class="btn-primary grn" onclick="next()">Next ▶ <span class="ar-t ar-i" dir="rtl" lang="ar" style="font-size:13px">التالي</span></button>
 </div>
-<div id="f16" class="fbb"><span class="en">Correct!</span><span class="ar-t" dir="rtl" lang="ar">صحيح!</span></div>
 </div>
 </div>
 
 <!-- Screen 21: Role Play with Omar -->
-<div class="screen" id="s21">
+<div class="screen" id="s15">
 <img src="images/bg-screen2.png?v=2" alt="" class="bg">
 <div class="dim" style="background:rgba(0,0,0,.2)"></div>
 <div class="ly" style="justify-content:center">
@@ -640,7 +609,7 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 </div>
 
 <!-- Screen 22: Output - My Favorites -->
-<div class="screen" id="s22">
+<div class="screen" id="s16">
 <img src="images/bg-screen11.png?v=2" alt="" class="bg">
 <div class="dim" style="background:rgba(0,0,0,.4)"></div>
 <div class="ly" style="justify-content:center">
@@ -665,7 +634,7 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 </div>
 
 <!-- Screen 23: Exit Ticket -->
-<div class="screen" id="s23">
+<div class="screen" id="s17">
 <img src="images/bg-screen12.png?v=2" alt="" class="bg">
 <div class="dim" style="background:rgba(0,0,0,.35)"></div>
 <div class="ly" style="justify-content:center">
@@ -684,13 +653,13 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 </div>
 </div>
 </div>
-<button class="btn-primary" id="goReport" onclick="go(24)" style="display:none">See Report <span class="ar-t ar-i" dir="rtl" lang="ar" style="font-size:13px">عرض النتيجة</span></button>
+<button class="btn-primary" id="goReport" onclick="go(18)" style="display:none">See Report <span class="ar-t ar-i" dir="rtl" lang="ar" style="font-size:13px">عرض النتيجة</span></button>
 <div id="f19" class="fbb"><span class="en">Correct!</span><span class="ar-t" dir="rtl" lang="ar">صحيح!</span></div>
 </div>
 </div>
 
 <!-- Screen 24: Summary -->
-<div class="screen" id="s24">
+<div class="screen" id="s18">
 <img src="images/bg-screen12.png?v=2" alt="" class="bg">
 <div class="dim" style="background:rgba(0,0,0,.4)"></div>
 <div class="ly" style="justify-content:center">
@@ -710,12 +679,12 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 <div class="card" style="padding:12px 24px;text-align:center" dir="ltr">
 <div style="font-weight:700;color:#1B4D3E;font-family:'Nunito';font-size:16px">Do you like ____? → Yes, I do. / No, I don't.</div><div class="ar-t" dir="rtl" lang="ar" style="font-size:13px;font-weight:600;color:#8D6E63;margin-top:4px">هل تحب ____؟ → نعم. / لا.</div>
 </div>
-<button class="btn-primary" onclick="go(25)" style="margin-top:14px">Next <span class="ar-t ar-i" dir="rtl" lang="ar" style="font-size:13px">التالي</span></button>
+<button class="btn-primary" onclick="go(19)" style="margin-top:14px">Next <span class="ar-t ar-i" dir="rtl" lang="ar" style="font-size:13px">التالي</span></button>
 </div>
 </div>
 
 <!-- Screen 25: Teacher Feedback -->
-<div class="screen" id="s25">
+<div class="screen" id="s19">
 <img src="images/bg-screen12.png?v=2" alt="" class="bg">
 <div class="dim" style="background:rgba(0,0,0,.35)"></div>
 <div class="ly" style="justify-content:center">
@@ -745,7 +714,7 @@ body.ar-on #s17 .ar-t{font-size:12px !important;margin-top:2px !important;margin
 </div>
 
 <script>
-const total=26;
+const total=20;
 let cur=0;
 let curAudio=null;
 
@@ -793,6 +762,29 @@ function sayAr(text){
 }
 if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){speechSynthesis.getVoices();};}
 
+/* ---------- 资源预加载：课前页后台拉取全部图片与音频，后续页面秒开 ---------- */
+(function(){
+ const BASE='';
+ const imgs=['images/logo.png','images/char-omar.png','images/char-omar-face.png','images/char-ahmed.png'];
+ for(let i=0;i<=12;i++){imgs.push('images/bg-screen'+i+'.png?v=2');}
+ ['dancing','drawing','reading','swimming'].forEach(function(n){imgs.push('images/bg-'+n+'.png');});
+ const auds=['football','reading','basketball','swimming','computer_games','drawing','painting','dancing',
+  'yes_i_do','no_i_dont','whats_your_name','how_are_you','my_name_omar','hi_omar','correct','try_again',
+  'great_job','good_try','sent_dancing','sent_reading_q','do_you_like_swimming','mood_happy'].map(function(n){return 'audio/'+n+'.mp3';});
+ const all=imgs.concat(auds);
+ let done=0;
+ const fill=document.getElementById('loadFill'),txt=document.getElementById('loadTxt');
+ function tick(){
+   done++;
+   const pct=Math.round(done/all.length*100);
+   if(fill){fill.style.width=pct+'%';}
+   if(txt){txt.textContent=pct>=100?'✔ الدرس جاهز! كل الصور والأصوات محمّلة':'جاري تحميل الصور والأصوات... '+pct+'%';}
+ }
+ all.forEach(function(u){
+   fetch(BASE+u).then(function(r){return r.blob();}).then(tick).catch(tick);
+ });
+})();
+
 /* ---------- Navigation ---------- */
 function go(n){
  stopAll();
@@ -805,14 +797,9 @@ function go(n){
  else if(cur===total-1){document.getElementById('pv').style.visibility='visible';document.getElementById('nx').style.visibility='hidden';}
  else{document.getElementById('pv').style.visibility='visible';document.getElementById('nx').style.visibility='visible';}
  if(cur===2){setTimeout(function(){playFile('audio/hi_omar.mp3',"Hi! I'm Omar. I'll learn with you today!");},400);}
- if(cur===12){startWM();}
- if(cur===13){startPM(1);}
- if(cur===14){startPM(2);}
- if(cur===15){startMT();}
- if(cur===16){startMT2();}
- if(cur===19){startFB();}
- if(cur===20){startSB();}
- if(cur===21){startRP();}
+ if(cur===12){startMole();}
+ if(cur===14){startHot();}
+ if(cur===15){startRP();}
 }
 /* ---------- Arabic full-translation toggle (session only, default OFF) ---------- */
 function toggleAr(){
@@ -856,254 +843,283 @@ function ans(btn,ok){
  }
 }
 
-/* ---------- Practice 1: Word Match (4 rounds) ---------- */
-const WM=[
- {ar:'الرسم',correct:'Drawing',opts:['Drawing','Dancing','Swimming','Football'],en:'drawing'},
- {ar:'كرة القدم',correct:'Football',opts:['Football','Basketball','Painting','Reading'],en:'football'},
- {ar:'السباحة',correct:'Swimming',opts:['Swimming','Dancing','Drawing','Computer games'],en:'swimming'},
- {ar:'ألعاب الكمبيوتر',correct:'Computer games',opts:['Computer games','Basketball','Reading','Painting'],en:'computer games'}
+/* ---------- Practice 1: Whack the Activity (打地鼠) ---------- */
+const MOLE_WORDS=[
+ {en:'football',disp:'Football',em:'⚽',ar:'كرة القدم'},
+ {en:'reading',disp:'Reading',em:'📖',ar:'القراءة'},
+ {en:'basketball',disp:'Basketball',em:'🏀',ar:'كرة السلة'},
+ {en:'swimming',disp:'Swimming',em:'🏊',ar:'السباحة'},
+ {en:'computer games',disp:'Computer Games',em:'🎮',ar:'ألعاب الكمبيوتر'},
+ {en:'drawing',disp:'Drawing',em:'✏️',ar:'الرسم'},
+ {en:'painting',disp:'Painting',em:'🎨',ar:'التلوين'},
+ {en:'dancing',disp:'Dancing',em:'💃',ar:'الرقص'}
 ];
-let wmI=0,wmLock=false;
-function startWM(){wmI=0;renderWM();}
-function renderWM(){
- wmLock=false;
- const d=WM[wmI];
- document.getElementById('wmP').textContent=(wmI+1)+' / '+WM.length;
- document.getElementById('wmQ').textContent=d.ar;
- const box=document.getElementById('wmOpts');
- box.innerHTML='';
- d.opts.forEach(function(o){
-   const b=document.createElement('button');
-   b.className='mc-btn';
-   b.textContent=o;
-   b.setAttribute('dir','ltr');
-   b.onclick=function(){
-     if(wmLock)return;
-     if(o===d.correct){
-       wmLock=true;
-       b.classList.add('right');
-       say(d.en);
-       showF('f12','Correct!','صحيح!');
-       setTimeout(function(){
-         wmI++;
-         if(wmI<WM.length){renderWM();}
-         else{next();}
-       },900);
-     }else{
-       b.classList.add('wrong');
-       say('try again');
-       setTimeout(function(){b.classList.remove('wrong');},600);
-     }
-   };
-   box.appendChild(b);
- });
-}
-
-
-/* ---------- Practice 3: Match the Pairs (picture-word) ---------- */
-const MT=[{e:'⚽',w:'Football'},{e:'🏊',w:'Swimming'},{e:'🎨',w:'Painting'},{e:'💃',w:'Dancing'}];
-const MT2=[{e:'📖',w:'Reading'},{e:'🏀',w:'Basketball'},{e:'🎮',w:'Computer Games'},{e:'✏️',w:'Drawing'}];
-let mtSel=null,mtDone=0;
-function startMT(){buildMT(MT,'mt','f15p');}
-function startMT2(){buildMT(MT2,'mt2','f16n');}
-function buildMT(D,pfx,fb){
- mtSel=null;mtDone=0;
- document.getElementById(pfx+'P').textContent='0 / '+D.length;
- const L=document.getElementById(pfx+'Left');L.innerHTML='';
- const R=document.getElementById(pfx+'Right');R.innerHTML='';
- D.forEach(function(d){
-   const b=document.createElement('button');
-   b.className='mc-btn';
-   b.style.fontSize='30px';b.style.padding='10px 20px';
-   b.textContent=d.e;b.setAttribute('data-key',d.w);
-   b.onclick=function(){
-     if(b.classList.contains('right'))return;
-     document.querySelectorAll('#'+pfx+'Left .mc-btn').forEach(function(x){x.classList.remove('on');});
-     b.classList.add('on');mtSel=b;
-   };
-   L.appendChild(b);
- });
- D.map(function(d){return d.w;}).sort(function(){return Math.random()-0.5;}).forEach(function(w){
-   const b=document.createElement('button');
-   b.className='mc-btn';
-   b.style.minWidth='170px';
-   b.textContent=w;b.setAttribute('data-key',w);b.setAttribute('dir','ltr');
-   b.onclick=function(){
-     if(b.classList.contains('right'))return;
-     if(!mtSel){b.classList.add('wrong');setTimeout(function(){b.classList.remove('wrong');},400);return;}
-     if(mtSel.getAttribute('data-key')===w){
-       mtSel.classList.remove('on');mtSel.classList.add('right');b.classList.add('right');
-       say(w.toLowerCase());
-       mtSel=null;mtDone++;
-       document.getElementById(pfx+'P').textContent=mtDone+' / '+D.length;
-       if(mtDone===D.length){say('great job');showF(fb,'Great job!','عمل رائع!');setTimeout(next,1200);}
-     }else{
-       b.classList.add('wrong');
-       say('try again');
-       setTimeout(function(){b.classList.remove('wrong');},600);
-     }
-   };
-   R.appendChild(b);
- });
-}
-
-const FB=[
- {pic:'📖',before:'I like',after:'.',ans:'reading',opts:['reading','dancing','football'],disp:'I like reading.',darQ:'أنا أحب ______.',dar:'أنا أحب القراءة.'},
- {pic:'🏀',before:'Do you like',after:'?',ans:'basketball',opts:['swimming','basketball','painting'],disp:'Do you like basketball?',darQ:'هل تحب ______؟',dar:'هل تحب كرة السلة؟'}
-];
-let fbI=0,fbLock=false;
-function startFB(){fbI=0;renderFB();}
-function renderFB(){
- fbLock=false;
- const d=FB[fbI];
- document.getElementById('fbP').textContent=(fbI+1)+' / '+FB.length;
- document.getElementById('fbPic').textContent=d.pic;
- document.getElementById('fbSent').innerHTML=d.before+' <span id="fbSlot" style="display:inline-block;min-width:150px;border-bottom:3px dashed #C9A227;color:#C9A227">______</span>'+d.after+'<div class="ar-t" dir="rtl" lang="ar" style="font-size:15px;font-weight:600;color:#8D6E63;margin-top:6px">'+d.darQ+'</div>';
- const box=document.getElementById('fbOpts');box.innerHTML='';
- d.opts.forEach(function(o){
-   const b=document.createElement('button');
-   b.className='mc-btn';b.textContent=o;b.setAttribute('dir','ltr');
-   b.onclick=function(){
-     if(fbLock)return;
-     if(o===d.ans){
-       fbLock=true;b.classList.add('right');
-       const slot=document.getElementById('fbSlot');
-       slot.textContent=o;slot.style.borderBottom='none';
-       say(o);
-       showF('f17',d.disp,d.dar);
-       setTimeout(function(){
-         fbI++;
-         if(fbI<FB.length){renderFB();}
-         else{next();}
-       },1300);
-     }else{
-       b.classList.add('wrong');
-       say('try again');
-       setTimeout(function(){b.classList.remove('wrong');},600);
-     }
-   };
-   box.appendChild(b);
- });
-}
-/* ---------- Practice 2&3: Picture Match (2 rounds each) ---------- */
-const PM=[
- [
-  {pic:'⚽',correct:'Football',opts:['Football','Reading','Dancing','Painting'],en:'football'},
-  {pic:'📖',correct:'Reading',opts:['Reading','Swimming','Football','Basketball'],en:'reading'}
- ],
- [
-  {pic:'🎮',correct:'Computer games',opts:['Computer games','Drawing','Swimming','Dancing'],en:'computer games'},
-  {pic:'💃',correct:'Dancing',opts:['Dancing','Basketball','Painting','Football'],en:'dancing'}
- ]
-];
-let pmI=0,pmSet=0,pmLock=false;
-function startPM(s){pmSet=s-1;pmI=0;renderPM();}
-function renderPM(){
- pmLock=false;
- const arr=PM[pmSet],d=arr[pmI];
- const sfx='pm'+(pmSet+1);
- document.getElementById(sfx+'P').textContent=(pmI+1)+' / '+arr.length;
- document.getElementById(sfx+'Pic').textContent=d.pic;
- const box=document.getElementById(sfx+'Opts');
- box.innerHTML='';
- d.opts.forEach(function(o){
-   const b=document.createElement('button');
-   b.className='mc-btn';
-   b.textContent=o;
-   b.setAttribute('dir','ltr');
-   b.onclick=function(){
-     if(pmLock)return;
-     if(o===d.correct){
-       pmLock=true;
-       b.classList.add('right');
-       say(d.en);
-       showF('f'+(pmSet===0?13:14),'Correct!','صحيح!');
-       setTimeout(function(){
-         pmI++;
-         if(pmI<arr.length){renderPM();}
-         else{next();}
-       },900);
-     }else{
-       b.classList.add('wrong');
-       say('try again');
-       setTimeout(function(){b.classList.remove('wrong');},600);
-     }
-   };
-   box.appendChild(b);
- });
-}
-
-/* ---------- Practice 5: Sentence Builder ---------- */
-const SB=[
- {target:['I','like','dancing','.'],display:'I like dancing.',audio:'i like dancing',dar:'أنا أحب الرقص.'},
- {target:['Do','you','like','reading','?'],display:'Do you like reading?',audio:'do you like reading',dar:'هل تحب القراءة؟'}
-];
-let sbI=0,sbPick=[],sbBank=[];
-function startSB(){sbI=0;renderSB();}
-function renderSB(){
- sbPick=[];
- document.getElementById('sbP').textContent=(sbI+1)+' / '+SB.length;
- sbBank=SB[sbI].target.slice().sort(function(){return Math.random()-0.5;});
- renderAsm();renderBank();
-}
-function renderAsm(){
- const asm=document.getElementById('sbAsm');
- asm.innerHTML='';
- const n=SB[sbI].target.length;
- for(let i=0;i<n;i++){
-   const s=document.createElement('div');
-   s.className='slot';
-   s.textContent=sbPick[i]||'';
-   s.onclick=function(){
-     if(sbPick[i]!==undefined){
-       sbBank.push(sbPick[i]);
-       sbPick.splice(i,1);
-       renderAsm();renderBank();
-     }
-   };
-   asm.appendChild(s);
+const MOLE_HOLES=6, MOLE_SECS=8.4;
+let moleOrder=[],moleRound=0,moleScore=0,moleLock=false,moleTimer=null,moleBarTimer=null;
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function confetti(){
+ const colors=['#C9A227','#4CAF50','#42A5F5','#EF5350','#FFD966','#AB47BC'];
+ for(let i=0;i<130;i++){
+   const d=document.createElement('div');
+   d.className='cf';
+   d.style.left=(Math.random()*100)+'vw';
+   d.style.background=colors[i%colors.length];
+   d.style.animationDuration=(1.6+Math.random()*1.6)+'s';
+   d.style.transform='rotate('+(Math.random()*360)+'deg)';
+   document.body.appendChild(d);
+   setTimeout(function(){d.remove();},3400);
  }
 }
-function renderBank(){
- const bank=document.getElementById('sbBank');
- bank.innerHTML='';
- sbBank.forEach(function(w,idx){
+function moleStopTimers(){clearTimeout(moleTimer);clearInterval(moleBarTimer);}
+function startMole(){
+ moleStopTimers();
+ document.getElementById('moleGrid').innerHTML=Array.from({length:MOLE_HOLES},function(){return '<div class="hole"></div>';}).join('');
+ moleOrder=shuffle(MOLE_WORDS.slice());
+ moleRound=0;moleScore=0;moleLock=false;
+ document.getElementById('moleScore').textContent='0';
+ const me0=document.getElementById('moleEnd');me0.style.display='none';me0.classList.remove('show');
+ document.getElementById('moleGrid').style.visibility='visible';
+ nextMoleRound();
+}
+function nextMoleRound(){
+ moleStopTimers();
+ if(moleRound>=8){
+   document.getElementById('moleGrid').style.visibility='hidden';
+   document.getElementById('moleWord').textContent='انتهت اللعبة!';
+   document.getElementById('moleBar').style.width='0%';
+   document.getElementById('moleFinal').textContent=moleScore+' / 8';
+   document.getElementById('moleStars').innerHTML=starsHTML(moleScore>=7?3:(moleScore>=5?2:1));
+   document.getElementById('moleEndNote').textContent=moleScore>=6?'ممتاز! ذاكرة قوية!':'جيد! لنراجع الكلمات مرة أخرى';
+   const me=document.getElementById('moleEnd');
+   me.style.display='flex';me.classList.add('show');
+   celebrate(moleScore>=6);
+   return;
+ }
+ moleLock=false;
+ const correct=moleOrder[moleRound];
+ const others=shuffle(MOLE_WORDS.filter(function(w){return w!==correct;})).slice(0,3);
+ const opts=shuffle([correct].concat(others));
+ document.getElementById('moleWord').textContent='«'+correct.ar+'»';
+ const holes=shuffle(Array.prototype.slice.call(document.querySelectorAll('#moleGrid .hole')));
+ document.querySelectorAll('#moleGrid .hole').forEach(function(h){h.innerHTML='';h.classList.remove('up');});
+ opts.forEach(function(w,i){
+   const h=holes[i];
+   h.innerHTML='<button class="mole" data-en="'+w.en+'"><span class="em">'+w.em+'</span><span>'+w.disp+'</span></button>';
+   setTimeout(function(){h.classList.add('up');},60);
+ });
+ document.querySelectorAll('#moleGrid .mole').forEach(function(m){
+   m.addEventListener('click',function(){
+     if(moleLock)return;
+     if(m.getAttribute('data-en')===correct.en){
+       moleLock=true;moleScore++;
+       document.getElementById('moleScore').textContent=moleScore;
+       m.classList.add('hit');
+       say(correct.en);
+       moleRound++;
+       moleStopTimers();
+       moleTimer=setTimeout(nextMoleRound,900);
+     }else{
+       m.classList.remove('shake');void m.offsetWidth;m.classList.add('shake');
+     }
+   });
+ });
+ const bar=document.getElementById('moleBar');let pct=100;
+ bar.style.width='100%';
+ moleBarTimer=setInterval(function(){pct-=100/(MOLE_SECS*10);bar.style.width=Math.max(0,pct)+'%';},100);
+ moleTimer=setTimeout(function(){moleRound++;nextMoleRound();},MOLE_SECS*1000);
+}
+
+/* ---------- Practice 2: Hot Potato (热土豆) ---------- */
+const HP=[
+ {type:'qa',q:'Do you like basketball? 🏀',opts:['Yes, I do.','No, I am not.','I am fine.','Thank you.'],ans:'Yes, I do.',sayIt:'yes, i do',secs:9},
+ {type:'fill',q:'I like ______ . 📖',opts:['reading','dancing','football'],ans:'reading',sayIt:'reading',secs:9},
+ {type:'build',target:['I','like','swimming','.'],sayIt:'swimming',secs:12},
+ {type:'qa',q:'Do you like painting? 🎨',opts:["No, I don't.","No, I am not.","Yes, I am.","No, it isn't."],ans:"No, I don't.",sayIt:"no, i don't",secs:9},
+ {type:'fill',q:'Do you like ______ ? 🏀',opts:['swimming','basketball','painting'],ans:'basketball',sayIt:'basketball',secs:9},
+ {type:'build',target:['Do','you','like','reading','?'],sayIt:'do you like reading',secs:12}
+];
+let hpI=0,hpScore=0,hpLock=false,hpTimer=null,hpFuseTimer=null,hpPick=[],hpBank=[];
+function hpBeep(freq,dur,vol){
+ try{
+   const ctx=window._hpCtx||(window._hpCtx=new (window.AudioContext||window.webkitAudioContext)());
+   const o=ctx.createOscillator(),g=ctx.createGain();
+   o.type='square';o.frequency.value=freq;
+   g.gain.setValueAtTime(vol||0.06,ctx.currentTime);
+   g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+dur);
+   o.connect(g);g.connect(ctx.destination);
+   o.start();o.stop(ctx.currentTime+dur);
+ }catch(e){}
+}
+function hpBoomSnd(){hpBeep(260,0.12,0.16);setTimeout(function(){hpBeep(150,0.18,0.14);},90);setTimeout(function(){hpBeep(90,0.25,0.12);},180);}
+function fanfareSnd(){
+ const seq=[[523,0],[659,140],[784,280],[1047,420],[784,600],[1047,740],[1319,900]];
+ seq.forEach(function(nd){
+   setTimeout(function(){
+     try{
+       const ctx=window._hpCtx||(window._hpCtx=new (window.AudioContext||window.webkitAudioContext)());
+       const o=ctx.createOscillator(),g=ctx.createGain();
+       o.type='triangle';o.frequency.value=nd[0];
+       g.gain.setValueAtTime(0.16,ctx.currentTime);
+       g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.35);
+       o.connect(g);g.connect(ctx.destination);
+       o.start();o.stop(ctx.currentTime+0.35);
+     }catch(e){}
+   },nd[1]);
+ });
+}
+function celebrate(ok){
+ confetti();
+ fanfareSnd();
+ if(ok){say('great job');}else{say('good try');}
+ setTimeout(fanfareSnd,1300);
+}
+function starsHTML(n){
+ let h='';
+ for(let i=0;i<3;i++){h+='<span class="pop" style="animation-delay:'+(0.15+i*0.3)+'s">'+(i<n?'⭐':'🌟')+'</span>';}
+ return h;
+}
+function hpStopTimers(){clearTimeout(hpTimer);clearInterval(hpFuseTimer);}
+function startHot(){
+ hpStopTimers();
+ hpI=0;hpScore=0;
+ document.getElementById('hpScore').textContent='0';
+ const he0=document.getElementById('hpEnd');he0.style.display='none';he0.classList.remove('show');
+ document.getElementById('hpCard').style.visibility='visible';
+ hpRound();
+}
+function hpRound(){
+ hpStopTimers();hpLock=false;hpPick=[];
+ const bomb=document.getElementById('hpBomb');
+ document.getElementById('hpSplatOmar').classList.remove('on');
+ document.getElementById('hpSplatYou').classList.remove('on');
+ bomb.style.display='block';bomb.textContent='🥔';bomb.style.left='78%';bomb.style.bottom='26px';bomb.classList.add('shakeb');
+ if(hpI>=HP.length){
+   bomb.classList.remove('shakeb');
+   document.getElementById('hpFuse').style.width='0%';
+   document.getElementById('hpQ').textContent='Game Over!';
+   document.getElementById('hpOpts').innerHTML='';
+   document.getElementById('hpAsm').style.display='none';
+   document.getElementById('hpBank').style.display='none';
+   document.getElementById('hpFinal').textContent=hpScore+' / 6';
+   document.getElementById('hpStars').innerHTML=starsHTML(hpScore>=5?3:(hpScore>=3?2:1));
+   document.getElementById('hpEndNote').textContent=hpScore>=4?'ممتاز! مرّرتَ كل البطاطس!':'جيد! لنحاول مرة أخرى';
+   const he=document.getElementById('hpEnd');
+   he.style.display='flex';he.classList.add('show');
+   celebrate(hpScore>=4);
+   return;
+ }
+ const d=HP[hpI];
+ document.getElementById('hpRound').textContent=hpI+1;
+ document.getElementById('hpQ').textContent=d.type==='build'?'Build the sentence! ركّب الجملة!':d.q;
+ const optsBox=document.getElementById('hpOpts');
+ const asm=document.getElementById('hpAsm'),bank=document.getElementById('hpBank');
+ if(d.type==='build'){
+   optsBox.innerHTML='';optsBox.style.display='none';
+   asm.style.display='flex';bank.style.display='flex';
+   hpBank=shuffle(d.target.slice());
+   hpRenderAsm(d);hpRenderBank(d);
+ }else{
+   asm.style.display='none';bank.style.display='none';
+   optsBox.style.display='grid';optsBox.innerHTML='';
+   shuffle(d.opts.slice()).forEach(function(o){
+     const b=document.createElement('button');
+     b.className='mc-btn';b.textContent=o;b.setAttribute('dir','ltr');
+     b.onclick=function(){hpAns(b,o===d.ans,d);};
+     optsBox.appendChild(b);
+   });
+ }
+ const fuse=document.getElementById('hpFuse');let pct=100;const secs=d.secs;let ticked=0;
+ fuse.style.width='100%';
+ hpFuseTimer=setInterval(function(){
+   pct-=100/(secs*10);fuse.style.width=Math.max(0,pct)+'%';
+   const left=Math.ceil(pct/100*secs);
+   if(left<=3&&left>=1&&ticked!==left){ticked=left;hpBeep(880,0.09,0.08);}
+ },100);
+ hpTimer=setTimeout(function(){hpExplode(d);},secs*1000);
+}
+function hpRenderAsm(d){
+ const asm=document.getElementById('hpAsm');asm.innerHTML='';
+ for(let i=0;i<d.target.length;i++){
+   const sl=document.createElement('div');sl.className='slot';
+   sl.textContent=hpPick[i]||'';
+   sl.onclick=function(){if(hpLock)return;if(hpPick[i]!==undefined){hpBank.push(hpPick[i]);hpPick.splice(i,1);hpRenderAsm(d);hpRenderBank(d);}};
+   asm.appendChild(sl);
+ }
+}
+function hpRenderBank(d){
+ const bank=document.getElementById('hpBank');bank.innerHTML='';
+ hpBank.forEach(function(w,idx){
    const b=document.createElement('button');
-   b.className='mb';
-   b.style.background='linear-gradient(135deg,#C9A227,#A8871E)';
-   b.style.fontSize='20px';
-   b.style.padding='12px 24px';
-   b.textContent=w;
+   b.className='mb';b.style.background='linear-gradient(135deg,#C9A227,#A8871E)';b.style.fontSize='19px';b.style.padding='10px 20px';
+   b.textContent=w;b.setAttribute('dir','ltr');
    b.onclick=function(){
-     sbPick.push(w);
-     sbBank.splice(idx,1);
-     renderAsm();renderBank();
-     if(sbPick.length===SB[sbI].target.length){checkSB();}
+     if(hpLock)return;
+     hpPick.push(w);hpBank.splice(idx,1);
+     hpRenderAsm(d);hpRenderBank(d);
+     if(hpPick.length===d.target.length){
+       if(hpPick.join(' ')===d.target.join(' ')){hpCorrect(d);}
+       else{
+         hpBeep(200,0.15,0.1);
+         asmShake(d);
+       }
+     }
    };
    bank.appendChild(b);
  });
 }
-function checkSB(){
- const ok=sbPick.join(' ')===SB[sbI].target.join(' ');
+function asmShake(d){
+ const asm=document.getElementById('hpAsm');
+ asm.classList.add('shake');
+ setTimeout(function(){
+   asm.classList.remove('shake');
+   hpBank=hpBank.concat(hpPick);hpPick=[];
+   hpRenderAsm(d);hpRenderBank(d);
+ },600);
+}
+function hpPass(){
+ const bomb=document.getElementById('hpBomb');
+ bomb.classList.remove('shakeb');
+ bomb.style.left='9%';bomb.style.bottom='110px';
+ setTimeout(function(){
+   bomb.style.display='none';
+   hpBoomSnd();
+   document.getElementById('hpSplatOmar').classList.add('on');
+ },480);
+}
+function hpCorrect(d){
+ hpLock=true;hpStopTimers();hpScore++;
+ document.getElementById('hpScore').textContent=hpScore;
+ say(d.sayIt);
+ hpPass();
+ hpI++;
+ hpTimer=setTimeout(hpRound,1400);
+}
+function hpAns(btn,ok,d){
+ if(hpLock)return;
  if(ok){
-   say(SB[sbI].audio);
-   showF('f16',SB[sbI].display,SB[sbI].dar);
-   setTimeout(function(){
-     sbI++;
-     if(sbI<SB.length){renderSB();}
-     else{next();}
-   },1400);
+   btn.classList.add('right');
+   hpCorrect(d);
  }else{
-   say('try again');
-   const asm=document.getElementById('sbAsm');
-   asm.classList.add('shake');
-   setTimeout(function(){
-     asm.classList.remove('shake');
-     sbBank=sbBank.concat(sbPick);
-     sbPick=[];
-     renderAsm();renderBank();
-   },700);
+   btn.classList.add('wrong');
+   hpSplatYou();
  }
+}
+function hpExplode(d){
+ hpSplatYou();
+}
+function hpSplatYou(){
+ if(hpLock)return;
+ hpStopTimers();hpLock=true;
+ const bomb=document.getElementById('hpBomb');
+ bomb.classList.remove('shakeb');bomb.style.display='none';
+ hpBoomSnd();
+ document.getElementById('hpSplatYou').classList.add('on');
+ document.getElementById('hpStage').classList.add('shake');
+ setTimeout(function(){
+   document.getElementById('hpStage').classList.remove('shake');
+   bomb.style.display='block';bomb.textContent='🥔';
+   hpI++;hpRound();
+ },1400);
 }
 
 /* ---------- Role Play with Omar ---------- */
